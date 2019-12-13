@@ -1,0 +1,124 @@
+<!-- <div class="col-md-10 offset-md-2">
+    <h3>Calender Schedular</h3>
+    <div class="card card-body mt-7">
+        <form [formGroup]='calenderform' (ngSubmit)='addevent(calenderform)' class="form-inline"
+            id="row" >
+            <div formArrayName="itemRows" >
+                <div *ngFor="let itemrow of formArr.controls;let i=index" [formGroupName]="i" class="form-inline">
+                    <div class="form-row" id="start">
+                        <input type="date" name="eventStartDate" onfocus="this.type='date'" onblur="this.type='text'"
+                            id="" formControlName='eventStartDate' placeholder="Start-Date" class="form-control mb-2 mr-sm-2">
+                    </div> 
+                    <div class="form-row" id="end">
+                        <input type="date" name="eventEndDate" onfocus="this.type='date'" onblur="this.type='text'"
+                            formControlName='eventEndDate' placeholder="End-Date" class="form-control mb-2 mr-sm-2">
+                    </div>
+                    <div class="form-row" id="from">
+                        <input type="time" name="fromTime" onfocus="this.type='time'" onblur="this.type='text'"
+                            formControlName='fromTime' placeholder="From Time" id="" class="form-control mb-2 mr-sm-2">
+                    </div>
+                    <div class="form-row" id="to">
+                        <input type="time" name="toTime" onfocus="this.type='time'" onblur="this.type='text'"
+                            formControlName='toTime' placeholder="To Time" id="" class="form-control mb-2 mr-sm-2">
+                    </div>
+                    <div class="form-row" id="tech">
+                        <select type="text" name="technology" formControlName='technology' id="" class="form-control mb-2 mr-sm-2">
+                            <option value="" disabled>technologies</option>
+                            <option value="Java Full Stack">Java Full Stack</option>
+                            <option value="Dot net Full stack">Dot net Full stack</option>
+                            <option value="Mean Stack">Mean Stack</option>
+                            <option value="Data science">Data Science</option>
+                            <option value="Mearn Stack">Mearn Stack</option>
+                        </select>
+                    </div>
+                    <div class="form-row" id="trainer">
+                        <select type="text" name="trainer" formControlName='trainer' id="" class="form-control mb-2 mr-sm-2">
+                            <option value="" disabled>trainer</option>
+                            <option value="Vikas">Vikas</option>
+                            <option value="Rohith">Rohith</option>
+                            <option value="Giridhar">Giridhar</option>
+                            <option value="Abhilash">Abhilash</option>
+                            <option value="Rohith">Rohith</option>
+                        </select>
+                    </div>
+                    <div  class="form-row" id="sub">
+                        <button  type="submit" class="btn btn-success form-control" >Submit</button>
+                    </div>
+                    <div  class="form-row" id="row">
+                        <button  type="button" class="btn btn-primary form-control" (click)='addrow()'>+</button>
+                    </div>
+                    <div  class="form-row" id="row">
+                        <button  type="button" class="btn btn-danger form-control" (click)="deleteRow(i)">-</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<app-calender [schedule]="name" ></app-calender> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" #form="ngForm" (ngSubmit)="addevent(form)">
+        <div class="container mt-5">
+            <div class="form-row" *ngFor="let obj of dataarray; let i=index">
+
+                <div class="form-group col-md-2">
+                    <label for="" style="margin-left: 40px;">From Date</label>
+                    <input type="date" class="form-control" name="eventStartDate" #eventStartDate="ngModel" ngModel>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="" style="margin-left: 40px;">To Date</label>
+                    <input type="date" class="form-control" name="eventEndDate" #eventEndDate="ngModel" ngModel>
+                </div>
+                <div class="form-group col-md-2"> <label for=" " style="margin-left: 40px;">From Time</label>
+                    <input type="time" class="form-control" name="fromTime" #fromTime="ngModel" ngModel>
+                </div>
+                <div class="form-group col-md-2"> <label for="" style="margin-left: 40px;">To Time</label>
+                    <input type="time" class="form-control" name="toTime" #toTime="ngModel" ngModel>
+                </div>
+                <div class="form-group col-md-2 ">
+                    <label for="" class="" style="margin-left: 40px;">Technology</label>
+                    <select type="text" class="form-control" name="technology" #technology="ngModel" ngModel>
+                        <option value="Technologies">Technologies</option>
+                        <option value="HTML">HTML</option>
+                        <option value="CSS">CSS</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="Java FullStack">Java FullStack</option>
+                        <option value="Mean Stack">Mean Stack</option>
+                        <option value="Data Science">Data Science</option>
+                        <option value="SQL">SQL</option>
+                        <option value="Mern Stack">Mern Stack</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2"> <label for="" style="margin-left: 40px;">Trainer</label>
+                    <select type="text" class="form-control" name="trainer" #trainer="ngModel" ngModel>
+                        <option value="Trainers">Trainers</option>
+                        <option value="Vikas">Vikas</option>
+                        <option value="Chandan">Chandan</option>
+                        <option value="Rajshekhar">Rajshekhar</option>
+                        <option value="Jasmine">Jasmine</option>
+                        <option value="Abhilash">Abhilash</option>
+                        <option value="Rahul">Rahul</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <button (click)="delForm(i)" type="submit" class="btn btn-danger">-</button>
+                </div>
+            </div>
+            <button (click)="addForm()" type="submit" class="btn btn-success">+</button>
+            <button type="submit" class="btn btn-outline-success" style="margin-left: 5px;">Submit</button>
+        </div>
+    </form>
+</body>
+
+</html>
