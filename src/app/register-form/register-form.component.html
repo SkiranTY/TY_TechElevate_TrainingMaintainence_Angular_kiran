@@ -1,169 +1,161 @@
-<!DOCTYPE html>
-<html lang="en">
+<label for="title" class="ty-font heading">Create Batch</label>
+<div class="card card-body col-md-4 offset-4 mt-5">
+  <div class="card-body">
+    <form #register="ngForm" (ngSubmit)="reg(register)">
+      <div class="form-row mt-3">
+        <div class="form-group col-md-6 ty-font user-input-wrp"> <br />
+          <input type="text" class="form-control  inputText" id="client" name="client" #client='ngModel' ngModel
+            required>
+          <span class="floating-label">Client Name</span>
+          <div *ngIf="client.invalid && (client.dirty || client.touched)" class="ty-errmsg ">
+            <div *ngIf="client.errors.required"> Client is required * </div>
+          </div>
+        </div>
+        <div class="col-md-6 ty-font left user-input-wrp" id="billdesc"><br />
+          <select class="custom-select inputText" id="test" name="technologies" #technologies='ngModel' ngModel
+            required>
+            <option selected disabled value="">Choose technology</option>
+            <option class="non" value="Java Full Stack">Java full stack</option>
+            <option class="non" value="Mean Stack">Mean stack</option>
+            <option class="non" value="Data Science">Data science</option>
+            <option class="editable" value="other">Other</option>
+          </select>
+          <input class="ty-editOption" style="display:none;" placeholder="technology" name="technology" ngModel>
+          <div *ngIf="technologies.invalid && (technologies.dirty || technologies.touched)" class="ty-errmsg ">
+            <div *ngIf="technologies.errors.required"> Technology is required * </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row mt-3">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-
-</head>
-
-<body>
-
-  <label for="title" class="ty-font heading">Create Batch</label>
-  <div class="card card-body col-md-4 offset-4 mt-5">
-    <div class="card-body">
-      <form #register="ngForm" (ngSubmit)="reg(register)">
-        <div class="form-row mt-3">
-          <div class="form-group col-md-6 ty-font user-input-wrp"> <br />
-            <input type="text" class="form-control  inputText" id="client" name="client" #client='ngModel' ngModel
-              required>
+        <div class="form-group col-md-6 ty-font user-input-wrp"> <br />
+          <select class="form-control  inputText" id="batchtype" name="batchType" #batchType='ngModel' ngModel required>
             <span class="floating-label">Client Name</span>
-            <div *ngIf="client.invalid && (client.dirty || client.touched)" class="ty-errmsg ">
-              <div *ngIf="client.errors.required"> Client is required * </div>
-            </div>
-          </div>
-          <div class="col-md-6 ty-font left user-input-wrp" id="billdesc"><br />
-            <select class="custom-select inputText" id="test" name="technologies" #technologies='ngModel' ngModel
-              required>
-              <option selected disabled value="">Choose technology</option>
-              <option class="non" value="Java Full Stack">Java full stack</option>
-              <option class="non" value="Mean Stack">Mean stack</option>
-              <option class="non" value="Data Science">Data science</option>
-              <option class="editable" value="other">Other</option>
-            </select>
-            <input class="ty-editOption" style="display:none;" placeholder="technology" name="technology" ngModel>
-            <div *ngIf="technologies.invalid && (technologies.dirty || technologies.touched)" class="ty-errmsg ">
-              <div *ngIf="technologies.errors.required"> Technology is required * </div>
-            </div>
+
+            <option value="" selected disabled hidden>Batchtype</option>
+            <option>Paid</option>
+            <option value="other">Free</option>
+          </select>
+          <div *ngIf="batchType.invalid && (batchType.dirty || batchType.touched)" class="ty-errmsg ">
+            <div *ngIf="batchType.errors.required"> Batchtype is required * </div>
           </div>
         </div>
-        <div class="form-row mt-3">
-
-          <div class="form-group col-md-6 ty-font user-input-wrp"> <br />
-            <select class="form-control  inputText" id="batchtype" name="batchType" #batchType='ngModel' ngModel
-              required>
-              <span class="floating-label">Client Name</span>
-
-              <option value="" selected disabled hidden>Batchtype</option>
-              <option>Paid</option>
-              <option value="other">Free</option>
-            </select>
-            <div *ngIf="batchType.invalid && (batchType.dirty || batchType.touched)" class="ty-errmsg ">
-              <div *ngIf="batchType.errors.required"> Batchtype is required * </div>
-            </div>
+        <div class="form-group col-md-6 ty-font left user-input-wrp"><br />
+          <input type="text" class="form-control   inputText" id="province" name="feeInfo" #feeInfo='ngModel' ngModel
+            required>
+          <span class="floating-label">Fees</span>
+          <div *ngIf="feeInfo.invalid && (feeInfo.dirty || feeInfo.touched)" class="ty-errmsg ">
+            <div *ngIf="feeInfo.errors.required"> fees info is required * </div>
           </div>
-          <div class="form-group col-md-6 ty-font left user-input-wrp"><br />
-            <input type="text" class="form-control   inputText" id="province" name="feeInfo" #feeInfo='ngModel' ngModel
-              required>
-            <span class="floating-label">Fees</span>
-            <div *ngIf="feeInfo.invalid && (feeInfo.dirty || feeInfo.touched)" class="ty-errmsg ">
-              <div *ngIf="feeInfo.errors.required"> fees info is required * </div>
-            </div>
 
+        </div>
+      </div>
+      <div class="form-row mt-3">
+
+        <div class="form-group col-md-6 ty-font user-input-wrp"><br />
+          <input type="text" class="form-control  inputText" id="input" name="costPerCandidate"
+            #costPerCandidate='ngModel' ngModel required>
+          <span class="floating-label">Cost per candidate</span>
+          <div *ngIf="costPerCandidate.invalid && (costPerCandidate.dirty || costPerCandidate.touched)"
+            class="ty-errmsg ">
+            <div *ngIf="costPerCandidate.errors.required"> info is required * </div>
           </div>
         </div>
-        <div class="form-row mt-3">
-
-          <div class="form-group col-md-6 ty-font user-input-wrp"><br />
-            <input type="text" class="form-control  inputText" id="input" name="costPerCandidate"
-              #costPerCandidate='ngModel' ngModel required>
-            <span class="floating-label">Cost per candidate</span>
-            <div *ngIf="costPerCandidate.invalid && (costPerCandidate.dirty || costPerCandidate.touched)"
-              class="ty-errmsg ">
-              <div *ngIf="costPerCandidate.errors.required"> info is required * </div>
-            </div>
-          </div>
-          <div class="form-group col-md-6 ty-font left user-input-wrp"><br />
-            <input type="text" class="form-control  inputText" id="input" name="location" #location='ngModel' ngModel
-              required>
-            <span class="floating-label">Location</span>
-            <div *ngIf="location.invalid && (location.dirty || location.touched)" class="ty-errmsg ">
-              <div *ngIf="location.errors.required"> Location is required * </div>
-            </div>
+        <div class="form-group col-md-6 ty-font left user-input-wrp"><br />
+          <input type="text" class="form-control  inputText" id="input" name="location" #location='ngModel' ngModel
+            required>
+          <span class="floating-label">Location</span>
+          <div *ngIf="location.invalid && (location.dirty || location.touched)" class="ty-errmsg ">
+            <div *ngIf="location.errors.required"> Location is required * </div>
           </div>
         </div>
-        <div class="form-row mt-3">
+      </div>
+      <div class="form-row mt-3">
 
-          <div class="form-group col-md-6 ty-font user-input-wrp"><br />
-            <input type="text" class="form-control  inputText " id="input" name="startdate" #startdate='ngModel' ngModel
-              required onfocus="this.type='date' " placeholder="Start-date" onblur="this.type='text'">
-            <div *ngIf="startdate.invalid && (startdate.dirty || startdate.touched)" class="ty-errmsg ">
-              <div *ngIf="startdate.errors.required"> startdate is required * </div>
-            </div>
-          </div>
-
-          <div class="form-group col-md-6 ty-font left user-input-wrp"><br />
-            <input type="text" class="form-control inputText" id="input" name="enddate" #enddate='ngModel' ngModel
-              required onfocus="this.type='date' " placeholder="End-date" onblur="this.type='text'">
-            <div *ngIf="enddate.invalid && (enddate.dirty || enddate.touched)" class="ty-errmsg ">
-              <div *ngIf="enddate.errors.required"> enddate is required * </div>
-            </div>
+        <div class="form-group col-md-6 ty-font user-input-wrp"><br />
+          <input type="text" class="form-control  inputText " id="input" name="startdate" #startdate='ngModel' ngModel
+            required onfocus="this.type='date' " placeholder="Start-date" onblur="this.type='text'">
+          <div *ngIf="startdate.invalid && (startdate.dirty || startdate.touched)" class="ty-errmsg ">
+            <div *ngIf="startdate.errors.required"> startdate is required * </div>
           </div>
         </div>
 
-        <div class="form-row mt-3">
+        <div class="form-group col-md-6 ty-font left user-input-wrp"><br />
+          <input type="text" class="form-control inputText" id="input" name="enddate" #enddate='ngModel' ngModel
+            required onfocus="this.type='date' " placeholder="End-date" onblur="this.type='text'">
+          <div *ngIf="enddate.invalid && (enddate.dirty || enddate.touched)" class="ty-errmsg ">
+            <div *ngIf="enddate.errors.required"> enddate is required * </div>
+          </div>
+        </div>
+      </div>
 
-          <div class="form-group col-md-6 ty-font user-input-wrp"><br />
-            <select class="form-control  inputText" id="input" name="typeOfJoining" #typeOfJoining='ngModel' ngModel
-              required>
-              <option value="" selected disabled hidden>Select Trainee type</option>
-              <option>Freshers </option>
-              <option>Lateral</option>
-              <option>Mixed</option>
-            </select>
-            <div *ngIf="typeOfJoining.invalid && (typeOfJoining.dirty || typeOfJoining.touched)" class="ty-errmsg ">
-              <div *ngIf="typeOfJoining.errors.required"> traineetype is required * </div>
-            </div>
-          </div>
-          <div class="form-group col-md-6 ty-font left user-input-wrp"><br />
-            <input type="text" class="form-control inputText " id="input" name="invoiceDate" #invoiceDate='ngModel'
-              ngModel required onfocus="this.type='date' " placeholder="Invoice" onblur="this.type='text'">
-            <div *ngIf="invoiceDate.invalid && (invoiceDate.dirty || invoiceDate.touched)" class="ty-errmsg ">
-              <div *ngIf="invoiceDate.errors.required"> invoice is required * </div>
-            </div>
+      <div class="form-row mt-3">
+
+        <div class="form-group col-md-6 ty-font user-input-wrp"><br />
+          <select class="form-control  inputText" id="input" name="typeOfJoining" #typeOfJoining='ngModel' ngModel
+            required>
+            <option value="" selected disabled hidden>Select Trainee type</option>
+            <option>Freshers </option>
+            <option>Lateral</option>
+            <option>Mixed</option>
+          </select>
+          <div *ngIf="typeOfJoining.invalid && (typeOfJoining.dirty || typeOfJoining.touched)" class="ty-errmsg ">
+            <div *ngIf="typeOfJoining.errors.required"> traineetype is required * </div>
           </div>
         </div>
-        <div class="form-row mt-3">
-          <div class="form-group col-md-6 ty-font user-input-wrp"><br />
-            <div class="form-check float-left">
-              <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1"
-                #exampleRadios1='ngModel' ngModel value="HTD" checked>
-              <label class="form-check-label" for="exampleRadios1">
-                HTD
-              </label>
-            </div>
-            <div class="form-check float-left">
-              <input class="form-check-input" type="radio" name="exampleRadios2" #exampleRadios2='ngModel' ngModel
-                id="exampleRadios2" value="ELF">
-              <label class="form-check-label" for="exampleRadios2">
-                ELF
-              </label>
-            </div>
-          </div>
-          <div class="form-group col-md-6 ty-font left user-input-wrp"><br />
-            <div class="form-check ">
-              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-              <label class="form-check-label" for="defaultCheck1">
-                Online Training
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-              <label class="form-check-label" for="defaultCheck1">
-                Offline Training
-              </label>
-            </div>
+        <div class="form-group col-md-6 ty-font left user-input-wrp"><br />
+          <input type="text" class="form-control inputText " id="input" name="invoiceDate" #invoiceDate='ngModel'
+            ngModel required onfocus="this.type='date' " placeholder="Invoice" onblur="this.type='text'">
+          <div *ngIf="invoiceDate.invalid && (invoiceDate.dirty || invoiceDate.touched)" class="ty-errmsg ">
+            <div *ngIf="invoiceDate.errors.required"> invoice is required * </div>
           </div>
         </div>
-        <div class="float-right ty-create-button">
-          <button type="submit" class="btn btn-outline-primary ty-font">Create</button></div>
-        <div class="float-right ty-reset-button">
-          <button type="reset" class="btn btn-outline-secondary ty-font">Reset</button></div>
+      </div>
+      <div class="form-row mt-3">
+        <div class="form-group col-md-6 ty-font user-input-wrp"><br />
+          <div class="form-check float-left">
+            <input class="form-check-input" type="radio" name="modeOfTraining" id="exampleRadios1"
+              #modeOfTraining='ngModel' ngModel value="HTD" checked>
+            <label class="form-check-label" for="exampleRadios1">
+              HTD
+            </label>
+          </div>
+          <div class="form-check float-left">
+            <input class="form-check-input" type="radio" name="modeOfTraining" #modeOfTraining='ngModel' ngModel
+              id="exampleRadios2" value="ELF">
+            <label class="form-check-label" for="exampleRadios2">
+              ELF
+            </label>
+          </div>
+        </div>
+        <div class="form-group col-md-6 ty-font left user-input-wrp"><br />
+          <div class="form-check ">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label" for="defaultCheck1">
+              Online Training
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label" for="defaultCheck1">
+              Offline Training
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="float-right ty-create-button">
+        <button type="submit" class="btn btn-outline-primary ty-font">Create</button></div>
+      <div class="float-right ty-reset-button">
+        <button type="reset" class="btn btn-outline-secondary ty-font">Reset</button></div>
+    </form>
+  </div>
+  <h5 style="color: skyblue;padding-left: 18px;">If you Want to upload Students file</h5>
+  <div class="col-md-4">
+    <div style="text-align: center">
+      <form>
+        <div> <input type="file" name="image" (change)="selectImage($event)" /> </div>
+        <div> <button type="submit" (click)="onSubmit()">Upload</button> </div>
       </form>
     </div>
   </div>
-</body>
-
-</html>
+</div>
