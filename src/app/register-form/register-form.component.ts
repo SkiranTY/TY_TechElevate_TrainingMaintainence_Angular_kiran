@@ -26,6 +26,7 @@ export class RegisterFormComponent implements OnInit {
       console.log(res);
       this.formdata = res;
       console.log(this.formdata);
+      register.reset();
     }, err => {
       console.log(err);
     }, () => {

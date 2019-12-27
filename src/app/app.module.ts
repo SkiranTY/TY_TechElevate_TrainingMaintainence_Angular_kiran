@@ -10,6 +10,9 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import { SchedulerComponent } from './scheduler/scheduler.component';
 import { CalenderComponent } from './calender/calender.component';
 import { FooterComponent } from './footer/footer.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { BatchdetailsComponent } from './batchdetails/batchdetails.component';
+import { StudentdetailsComponent } from './studentdetails/studentdetails.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { FooterComponent } from './footer/footer.component';
     RegisterFormComponent,
     SchedulerComponent,
     CalenderComponent,
-    FooterComponent
+    FooterComponent,
+    DashboardComponent,
+    BatchdetailsComponent,
+    StudentdetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +34,10 @@ import { FooterComponent } from './footer/footer.component';
     RouterModule.forRoot([
       { path: 'register-form', component: RegisterFormComponent },
       { path: 'schedular', component: SchedulerComponent },
-      { path: 'calender', component: CalenderComponent }
+      { path: 'calender', component: CalenderComponent },
+      { path: 'dashboard', component: DashboardComponent},
+      { path: 'batchdetails', component: BatchdetailsComponent},
+      { path: 'studentdetails', component: StudentdetailsComponent}
     ])
   ],
   providers: [],

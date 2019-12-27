@@ -8,20 +8,27 @@ import { map } from 'rxjs/operators';
 export class FormregisterService {
 
   constructor(private http: HttpClient) {
-    this.getCalData()
+    this.getCalData();
+    this.getBatchData();
   }
 
   percentDone = null;
   uploadSuccess = false;
+  barchartdata:any=[];
+  studentdetails:any=[];
 
   url: string = "http://localhost:8086/batchinformation/batch";
 
   calenderurl: string = "http://localhost:8086/calender/calender";
 
-  uploadurl: string = "http://localhost:8086/Upload/uploaddoc";
+  uploadurl: string = "http://localhost:8086/Upload";
 
   postData(data) {
     return this.http.post(`${this.url}`, data);
+  }
+
+  getBatchData(){
+    return this.http.get(`${this.url}`);
   }
 
   postCalData(caldata) {
@@ -33,6 +40,10 @@ export class FormregisterService {
   }
 
   postupload(file) {
-    return this.http.post(`${this.uploadurl}`,file)
+    return this.http.post(`${this.uploadurl}/uploaddoc`,file)
+  }
+
+  getStudentData(){
+    return this.http.get(`${this.uploadurl}/Studentdetails`);
   }
 }
