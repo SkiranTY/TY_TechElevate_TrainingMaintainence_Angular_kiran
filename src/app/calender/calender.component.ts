@@ -32,7 +32,7 @@ export class CalenderComponent implements OnInit {
 					// fromTime:eve.fromTime,
 					// toTime : eve.toTime,
 				
-				})
+				}) 
 			})
 			console.log('Events ',this.actualData)
 		}, err => {

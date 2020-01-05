@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormregisterService } from '../formregister.service';
+import { dataLoader } from '@amcharts/amcharts4/core';
 
 @Component({
   selector: 'app-register-form',
@@ -20,18 +21,17 @@ export class RegisterFormComponent implements OnInit {
     }
   }
 
+  // getcode(data){
+  //   this.service.getbatchcode(data).subscribe(res=>{
+  //     console.log(res)
+  //   },err=>{
+  //     console.log(err);
+  //   })
+  // }
+
   reg(register) {
-    console.log(register.value);
-    this.service.postData(register.value).subscribe(res => {
-      console.log(res);
-      this.formdata = res;
-      console.log(this.formdata);
-      register.reset();
-    }, err => {
-      console.log(err);
-    }, () => {
-      console.log("posted succssfully");
-    })
+    console.log(register);
+    this.onSubmit();
   }
 
   onSubmit() { 
