@@ -14,18 +14,21 @@ export class SchedulerComponent implements OnInit {
 
 	home = new Calendar()
 	dataarray = [];
-	constructor(private calservice: FormregisterService, private _fb: FormBuilder, private router: Router) { }
+	constructor(private calservice: FormregisterService, private _fb: FormBuilder, private router: Router) { 
+		this.togetBatchcode();
+	}
 
 
 	name = 'schedule'
 
-	allevents: any[]= [];
+	allevents: any[] = [];
+	batchdetails: any = [];
 
 	addevent(form) {
 		console.log(form.value);
 		this.calservice.postCalData(form.value).subscribe(res => {
 			console.log(res);
-			console.log(typeof(res));
+			console.log(typeof (res));
 			form.reset();
 		}, err => {
 			console.log(err);
@@ -34,6 +37,16 @@ export class SchedulerComponent implements OnInit {
 		})
 		//this.router.navigateByUrl('/calender')
 
+	}
+
+	togetBatchcode() {
+		this.calservice.getBatchData().subscribe(res => {
+			console.log(res);
+			this.batchdetails=res;
+			console.log(this.batchdetails.batchinfo)
+		}, err => {
+			console.log(err)
+		})
 	}
 
 	ngOnInit() {

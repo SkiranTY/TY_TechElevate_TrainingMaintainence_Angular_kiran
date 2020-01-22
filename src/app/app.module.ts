@@ -14,6 +14,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { BatchdetailsComponent } from './batchdetails/batchdetails.component';
 import { StudentdetailsComponent } from './studentdetails/studentdetails.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,7 @@ import { StudentdetailsComponent } from './studentdetails/studentdetails.compone
     FooterComponent,
     DashboardComponent,
     BatchdetailsComponent,
-    StudentdetailsComponent
+    StudentdetailsComponent,
   ],
   imports: [
     BrowserModule,

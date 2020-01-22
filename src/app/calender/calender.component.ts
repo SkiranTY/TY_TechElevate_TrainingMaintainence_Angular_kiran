@@ -12,12 +12,12 @@ import html2canvas from 'html2canvas';
 })
 
 export class CalenderComponent implements OnInit {
+
+
+	constructor(private service: FormregisterService) { }
+
+
 	
-
-	constructor(private service: FormregisterService) {  }
-
-
-	actualData: any = [];
 	calendarData: any = [];
 
 	getCalendarEvent() {
@@ -25,23 +25,21 @@ export class CalenderComponent implements OnInit {
 			this.calendarData = data;
 			console.log(this.calendarData);
 			this.calendarData.map(eve => {
-				this.actualData.push({
-					start : eve.eventStartDate,
-					end : eve.eventEndDate,
-					title : eve.technology,
-					// fromTime:eve.fromTime,
-					// toTime : eve.toTime,
-				
-				}) 
+				this.service.actualData.push({
+					title: eve.fromTime + ":" + eve.toTime +"->"+eve.technology,
+					start: eve.eventStartDate,
+					end: eve.eventEndDate,
+					
+				})
 			})
-			console.log('Events ',this.actualData)
+			console.log('Events ', this.service.actualData)
 		}, err => {
 			console.log(err)
 		}, () => {
 			console.log("data get Successfully")
 		})
 	}
-	
+
 
 	getcalender() {
 		$('#calendar').fullCalendar({
@@ -52,11 +50,11 @@ export class CalenderComponent implements OnInit {
 				right: 'month,agendaWeek,agendaDay'
 			},
 
-			defaultDate: '2019-12-01',
+			defaultDate: '2020-01-01',
 			editable: true,
 			eventLimit: true, // allow "more" link when too many events
 
-			events:this.actualData
+			events: this.service.actualData
 			// [
 			// {
 			// 	title: 'java',
@@ -70,27 +68,27 @@ export class CalenderComponent implements OnInit {
 	}
 
 
-	async ngOnInit() {
-		this.getcalender();
+	ngOnInit() {
 		this.getCalendarEvent();
-		
+		//this.getcalender();
+
 	}
 
-	print()  {  
-    var data = document.getElementById('calendar');  
-    html2canvas(data).then(canvas => {  
-      // Few necessary setting options  
-      var imgWidth = 200;   
-      var pageHeight = 220;    
-      var imgHeight = canvas.height * imgWidth / canvas.width;  
-	  var heightLeft = imgHeight; 
-	  var calendername= this.getcalender
-  
-      const contentDataURL = canvas.toDataURL('image/png')  
-      let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
-      var position = 0;  
-      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
-      pdf.save('cal.pdf'); // Generated PDF   
-    });  
-  }  
+	print() {
+		var data = document.getElementById('calendar');
+		html2canvas(data).then(canvas => {
+			// Few necessary setting options  
+			var imgWidth = 200;
+			var pageHeight = 220;
+			var imgHeight = canvas.height * imgWidth / canvas.width;
+			var heightLeft = imgHeight;
+			var calendername = this.getcalender
+
+			const contentDataURL = canvas.toDataURL('image/png')
+			let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
+			var position = 0;
+			pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
+			pdf.save('cal.pdf'); // Generated PDF   
+		});
+	}
 }

@@ -21,26 +21,24 @@ export class RegisterFormComponent implements OnInit {
     }
   }
 
-  // getcode(data){
-  //   this.service.getbatchcode(data).subscribe(res=>{
-  //     console.log(res)
-  //   },err=>{
-  //     console.log(err);
-  //   })
-  // }
-
-  reg(register) {
-    console.log(register);
+  reg(data) {
+    this.service.postData(data.value).subscribe(res=>{
+      console.log(res);
+      this.formdata=res;
+    },err=>{
+      console.log(err);
+    })
     this.onSubmit();
   }
 
   onSubmit() { 
     const formData = new FormData(); 
-     formData.append('file', this.images); 
-    this.service.postupload(formData).subscribe((res) => 
-    console.log(res), 
-    (err) => 
+    formData.append('file', this.images); 
+    this.service.postupload(formData).subscribe(res => {
+    console.log(res)
+    },(err) => {
     console.log(err)
+    }
     )};
  
   ngOnInit() {
